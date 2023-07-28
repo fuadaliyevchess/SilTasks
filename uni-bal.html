@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+const score = prompt("baliniz: ");
+let qiymet;
+
+switch (true) {
+case score >= 91 && score <= 100:
+    qiymet = "A";
+    break;
+case score >= 81 && score < 90:
+    qiymet = "B";
+    break;
+case score >= 71 && score < 80:
+    qiymet = "C";
+    break;
+case score >= 61 && score < 70:
+    qiymet = "D";
+    break;
+case score >= 51 && score < 60:
+    qiymet = "E";
+    break;
+case score < 50:
+    qiymet = "F"
+    break;
+default:
+    qiymet = "Gijdəmə!";
+}
+
+console.log(`Siz ${qiymet} aldiniz!`);
+    </script>
+</body>
+</html>
