@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        flex-basis: content;
+        justify-content: center;
+        background-color: #333;
+        align-items: center;
+        padding: 0;
+        margin: 0;
+      }
+      main {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      button {
+        width: 7.5rem;
+        height: 7.5rem;
+        border-radius: 8px;
+      }
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .arrow-key-container {
+        display: inline-block;
+        text-align: center;
+      }
+      .arrow-key {
+        align-items: center;
+        background: #ccc;
+        border-radius: 6px;
+        box-shadow: -1px 1px 0 #999, -2px 2px 0 #999, -3px 3px 0 #999,
+          -4px 4px 0 #999;
+        color: #fff;
+        display: inline-flex;
+        font-size: 30px;
+        font-weight: bold;
+        height: 75px;
+        justify-content: center;
+        margin: 5px;
+        transition: box-shadow 0.1s linear, transform 0.1s linear;
+        width: 75px;
+        &:active,
+        &.press {
+          box-shadow: 0px 0px 0 #999, 0px 0px 0 #999, 0px 0px 0 #999,
+            -1px 1px 0 #999;
+        }
+        &.left:before {
+          content: "\2190";
+        }
+        &.up:before {
+          content: "\2191";
+        }
+        &.down:before {
+          content: "\2193";
+        }
+        &.right:before {
+          content: "\2192";
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <button class="keyboard" value="w">KeyW</button>
+      <div>
+        <button class="keyboard" value="a">KeyA</button>
+        <button class="keyboard" value="s">KeyS</button>
+        <button class="keyboard" value="d">KeyD</button>
+      </div>
+    </main>
+    <footer>
+      <div class="arrow-key-container">
+        <div class="arrow-key up" data-key="38"></div>
+        <br />
+        <div class="arrow-key left" data-key="37"></div>
+        <div class="arrow-key down" data-key="40"></div>
+        <div class="arrow-key right" data-key="39"></div>
+      </div>
+    </footer>
+    <script>
+      const keyboard = document.querySelectorAll(".keyboard");
+
+      keyboard.forEach((e) => {
+        window.addEventListener("keydown", (event) => {
+          if (event.code == e.innerHTML) {
+            e.innerHTML = `<img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExamZicjI2NnRlb3o0b2tiOXdncGNjNG94ZGVrMXo0ZHc5bTBicm4zZCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/CJjU1H0luoCXqM2OP7/200w.gif">`;
+          }
+        });
+      });
+
+
+
+      window.addEventListener('keyup', arrowUp)
+window.addEventListener('keydown', arrowDown)
+
+function arrowDown(e) {
+  const key = document.querySelector(`.arrow-key[data-key="${e.keyCode}"]`);
+  key.classList.add('press')
+}
+function arrowUp(e) {
+  const key = document.querySelector(`.arrow-key[data-key="${e.keyCode}"]`);
+   key.classList.remove('press')
+}
+    </script>
+  </body>
+</html>
